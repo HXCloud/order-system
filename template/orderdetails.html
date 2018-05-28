@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>订单</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="food">
+	<div class="top">
+        <div class="title">我的订单 Orders</div>
+        	<div class="member">{$member}<a style="margin-left:10px;" href="checkout.php">退出</a></div>
+	</div><!--top end-->
+    
+    <div class="left">
+       <ul id="myTab">
+      	   <li><a href="index.php">全部</a></li>
+           <li><a href="hots.php?hot=1">热销</a></li>
+           <li><a href="types.php?typeid=1">正餐</a></li>
+           <li><a href="types.php?typeid=2">饮品</a></li>
+           <li><a href="types.php?typeid=3">甜点</a></li>
+           <li><a href="carts.php">我的购物车</a></li>
+           <li><a href="orders.php">我的订单</a></li>
+        </ul>
+    </div>
+
+    <div class="right">
+        <div class="scroll">
+                <table class="orders">
+                    <tr>
+                        <td class="order_img"></td>
+                        <td class="order_item">商品名称</td>
+                        <td class="order_item">单价</td>
+                        <td class="order_item">数量</td>
+                        <td class="order_item">小计</td> 
+                    </tr>
+                    {foreach item=detail from=$details}  
+                     <tr>
+                        <td class="orders_img"><img src="{$detail->getImg()}" class="picture"/></td>
+                        <td class="orders_item">{$detail->getMenu()->getName()}</td>
+                        <td class="orders_item">{$detail->getPrice()}</td>
+                        <td class="orders_item">{$detail->getQuantity()}</td>
+                        <td class="orders_item">{$detail->getSubtotal()}</td>
+                     </tr>
+                    {/foreach}
+               </table>
+               <a href="orders.php" class="reback">返回订单列表</a>
+    	</div>
+    </div>
+</div>
+</body>
+
+</html>

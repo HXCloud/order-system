@@ -1,0 +1,204 @@
+body{
+	background-image:url(../img/bg11.jpg);
+	background-size:cover;
+	background-repeat:no-repeat;
+	margin:0px;
+	overflow:hidden;
+	}
+.food{
+  	width:730px;
+	height:700px;
+	margin:0px auto;
+	}
+.title{
+	width:630px;
+	height:50px;
+	background-color:#2D2D3F;
+	font-size: 25px; 
+	line-height:50px;
+	text-align:center;
+	color:#fff;
+	float:left;
+}
+.member{
+	width:90px;
+	height:50px;
+	background-color:#2D2D3F;
+	font-size: 14px; 
+	line-height:50px;
+	color:#fff;
+	float:left;
+}
+.left{
+width:120px;
+height:366px;
+float:left;
+background-color:#F6F6F6;
+opacity:0.9;
+}
+#myTab{
+ width:120px;
+ height:366px;
+ float:left;
+ margin:0;
+ padding:0;
+ list-style-type:none;
+ font-size:14px;
+ line-height:40px;
+ text-align:center;
+}
+li{ 
+background-color:#2D2D3F;
+padding:10px;
+height:40px;
+border-bottom:1px solid #fff;
+}
+#myTab a{
+ text-decoration:none;
+ color:#fff;
+}
+#myTab a:visited{
+color:#fff;
+}
+#myTab a:hover{
+color:orange;
+}
+
+.right{
+width:600px;
+height:765px;
+float:left;
+opacity:0.9;
+background-color:#F6F6F6;
+overflow:hidden; 
+}
+.scroll{
+width:620px;
+height:740px;
+overflow:scroll; 
+}
+.menu{
+width:600px;
+height:150px;
+}
+.picture{
+float:left;
+width:150px;
+height:150px;
+
+}
+.contain{
+	float:left;
+	width:410px;
+	height:150px;
+	padding:5px;
+}
+
+.content{
+	padding-top:5px;
+	padding-left:10px;
+	display: flex;
+}
+
+.content span{
+	color:#C30;
+	font-size:20px;
+}
+.jbtn{
+	padding: 2px 11px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    color: #F00;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-flex;
+}
+.del{
+ 	text-decoration:blink;
+	color:#F00;
+	font-size: 15px; 
+	float:right;
+	margin-top:20px;
+}
+
+.btn{
+	float:right;
+	margin-top:40px;	
+	width:33px;
+	height:33px;
+	background-color:#fff;
+	border: 2px solid #ccc;  
+	border-radius: 10px;   
+	color:#F00;
+	font-size: 25px; 
+}
+.payment{
+		width:600px;
+		height:35px;
+		position:absolute;
+		bottom:0px;
+		line-height:35px;
+		background-color:#2D2D3F;
+		color:#fff;		
+	}
+	.total{
+		margin-left:15px;
+	}
+	.total span{
+		margin-right:15px;	
+		margin-top:10px;
+		float:right;	
+	}
+.orders{
+	text-align:center;
+	margin:0px auto;
+}
+.order_item{
+	float:left;
+	width:100px;
+	height:30px;
+	
+}
+.orders_item{
+	float:left;
+	width:100px;
+	height:30px;
+	line-height:150px;
+	margin-top:5px;
+}
+td{
+	padding-top:5px;
+}
+.order_time{
+	float:left;
+	width:200px;
+	height:30px;
+}
+.order_item a{
+	text-decoration:none;
+}
+.search{
+	width:550px;
+	height:30px;
+	margin:10px auto;
+}
+.index{
+	margin-left:90px;
+}
+
+.numBar >input{
+border: 2px solid #cccccc;
+    margin-left: -2px;
+	text-align:center;
+}
+.numBar >a:last-child{
+    margin-left: -2px;
+}
+.reback{
+	text-decoration:none;
+	float:right;
+	margin-right:50px;
+	
+}

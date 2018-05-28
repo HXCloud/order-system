@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<title>订单</title>
+<script language="JavaScript" src="js/mydate.js"></script>
+</head>
+
+<body>
+<div class="food">
+	<div class="top">
+        <div class="title">我的订单 Orders</div>
+        	<div class="member">{$member}<a style="margin-left:10px;" href="checkout.php">退出</a></div>
+	</div><!--top end-->
+    <div class="left">
+       <ul id="myTab">
+      	   <li><a href="index.php">全部</a></li>
+           <li><a href="hots.php?hot=1">热销</a></li>
+           <li><a href="types.php?typeid=1">正餐</a></li>
+           <li><a href="types.php?typeid=2">饮品</a></li>
+           <li><a href="types.php?typeid=3">甜点</a></li>
+           <li><a href="carts.php">我的购物车</a></li>
+           <li><a href="orders.php">我的订单</a></li>
+        </ul>
+    </div>
+
+    <div class="right">
+    	<div class="scroll">
+            <div class="search">
+            <form action="orders.php" method="post">
+              *请选择你想查询的时间段的订单信息<br/>
+               开始时间:<input type="text" name="starttime" onFocus="MyCalendar.SetDate(this)" value=""/>
+			   结束时间:<input type="text" name="endtime" onFocus="MyCalendar.SetDate(this)" value=""/>
+              <input type="submit" name="serach" value="查询"/>
+              </form>
+            </div>
+            <table class="orders">
+                <tr>
+                    <td class="order_item">订单编号</td>
+                    <td class="order_item">订单总价</td>
+                    <td class="order_time">下单时间</td>
+                    <td class="order_item"></td>
+                </tr>
+                {foreach item=order from=$orders}  
+                 <tr>
+                    <td class="order_item">{$order->getId()}</td>
+                    <td class="order_item">{$order->getTotal()}</td>
+                    <td class="order_time">{$order->getPubtime()}</td>
+                    <td class="order_item"><a href="orderdetails.php?orderid={$order->getId()}">查看详情</a></td>
+                 </tr>
+                 
+                {/foreach}
+            </table>  
+           <div style="margin:100px 300px;"> {$orderr}</div>
+    	</div>
+    </div>
+</div>
+</body>
+
+</html>

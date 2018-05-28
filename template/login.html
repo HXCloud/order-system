@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录</title>
+<style type="text/css">
+body{
+	background-image:url(img/bg.jpg);
+	background-size:cover;
+	}
+#login{   
+    width:275px;
+	margin:150px auto 100px auto;
+	padding:30px 50px;
+	border:1px solid #f4f4f4;
+	background:rgba(255,255,255,.5);
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-box-shadow: 0 0 2px #aaa;
+	-moz-box-shadow: 0 0 2px #aaa;
+}   
+#login h1{   
+    color: #000;   
+    text-shadow:0 0 10px;   
+    letter-spacing: 1px;   
+    text-align: center;  
+	font-size: 2em;   
+    margin:10px 0;   
+}       
+input{   
+    width: 278px;   
+    height: 18px;   
+    margin-bottom: 10px;    
+    padding: 10px;   
+    font-size: 13px;   
+    color: #fff;   
+    border-top: 1px solid #312E3D;   
+    border-left: 1px solid #312E3D;   
+    border-right: 1px solid #312E3D;   
+    border-bottom: 1px solid #56536A;   
+    border-radius: 4px;   
+    background-color: #2D2D3F;   
+}   
+.validcode{   
+    width: 170px; 
+}
+.regbutton{   
+    width: 300px;   
+    min-height: 40px;   
+    display: block;   
+    background-color: #4a77d4;   
+    border: 1px solid #3762bc;   
+    color: #fff;   
+    padding: 9px 14px;   
+    font-size: 15px;   
+    line-height: normal;   
+    border-radius: 5px;   
+    margin: 0;   
+}  
+
+.code{
+	float:right;
+}
+</style>
+</head>
+
+<body>
+<div id="login">
+<h1>Food</h1> 
+<form id="form1" name="form1" action="auth.php" method="post">
+<input name="account" id="account" type="text" placeholder="用户名" />
+<input name="passwd" id="passwd" type="password" placeholder="密码"/></br>
+<input type="text" name="passcode" class="validcode" placeholder="请输入验证码">
+<div class="code"> 
+<img id="code" title="点击刷新" onclick="this.src='code.php?'+Math.random();" src="code.php">
+<!--<a href="#" onclick="document.getElementById('code').src='./code.php?r='+Math.random()">换一个?</a>-->
+</div>
+<button name="button" class="regbutton" type="submit" >Login</button></br>
+<a style="margin-left:210px;;" href="register.php">未注册？</a>
+</form>
+</div>
+<div data-result=""></div>
+<div data-progress-start style="display:none;">正在传送中</div>
+<div data-progress-end style="display:none;">操作结束</div>
+</body>
+<script src="./js/jquery-3.1.1.min.js"></script>
+<script>
+$(function(){
+	$("[data-progress-start]").ajaxStart(function() {
+        $(this).show();
+		console.log("ajax_start");
+    });
+	 
+	  $("#button").click(function(){
+		 $.ajax({
+			 url:"auth.php",
+			 dataType:"json",
+			 type:"POST",
+			 beforeSend: function(){
+				 console.log("操作开始");
+				 $("[data-progress-start]").show("slow");
+				 $("[data-progress-end]").hide("slow");
+			},
+			success: function(data){
+				console.log("操作成功");	
+				console.log(data);	
+				$("[data-progress-start]").hide("slow");
+				$("[data-progress-end]").hide("slow");
+					//var obj = $.parseJSON(data);
+				$("[data-result='']").html(data.message);
+			},
+			complete: function(){
+				console.log("操作结束");
+				$("[data-progress-start]").hide("slow");
+				$("[data-progress-end]").show("slow");	
+			}
+		});
+	 });
+
+});
+</script>
+</html>

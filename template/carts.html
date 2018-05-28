@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>购物车</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="food">
+	<div class="top">
+        <div class="title">购物车 </div>
+        	<div class="member">{$member}<a style="margin-left:10px;" href="checkout.php">退出</a></div>
+	</div><!--top end-->
+    
+    <div class="left">
+       <ul id="myTab">
+      	   <li><a href="index.php">全部</a></li>
+           <li><a href="hots.php?hot=1">热销</a></li>
+           <li><a href="types.php?typeid=1">正餐</a></li>
+           <li><a href="types.php?typeid=2">饮品</a></li>
+           <li><a href="types.php?typeid=3">甜点</a></li>
+           <li><a href="carts.php">我的购物车</a></li>
+           <li><a href="orders.php">我的订单</a></li>
+        </ul>
+    </div><!--left end-->
+
+    <div class="right">
+        <div class="scroll">
+        <form action="save_cart.php" method="post" name="form1">
+            {foreach item=cart from=$carts}  
+             <div class="menu">
+                <img src="{$cart->getImg()}" class="picture" >
+                <input type="hidden" name="img[]" value="{$cart->getImg()}" /> 
+                <div class="contain">
+                <input type="hidden" name="menuid[]" value="{$cart->getMenuid()}" /> 
+                    <div class="content">【{$cart->getName()}】 ￥{$cart->getPrice()}元</div>
+                    <br/>
+                    <div class="content numBar">数量： 
+                        <a href="cart_jian.php?id={$cart->getId()}" class="jbtn" name="jian">-</a> 
+                        <input type="text" name="number[]" value="{$cart->getNumber()}" size="2"/>
+                        <input type="hidden" name="price[]" value="{$cart->getPrice()}" /> 
+                        <a href="cart_jia.php?id={$cart->getId()}" class="jbtn" name="jia">+</a>
+                    </div>
+                    <div class="content">小计：{$cart->getNumber()*$cart->getPrice()} </div>
+                    <input type="hidden" name="subtotal[]" value="{$cart->getNumber()*$cart->getPrice()}" /> 
+                        <a href="cart_del.php?id={$cart->getId()}" class="del">删除</a>
+           		    </div>
+             </div>
+             	<hr width="595px"/>
+		     {/foreach}
+			<div class="payment"> 
+            <input type="hidden" name="total" value="{$s}" />
+             <div class="total">合计：¥{$s}<span><input type="submit" value="提交订单" /></span></div> 
+            </div>
+         </form>
+        </div><!--scroll end-->
+    </div><!--right end-->
+</div>
+</body>
+{literal}
+<script src="./js/jquery-3.1.1.min.js"></script>
+<script src="./js/jquery.form.min.js"></script>
+<script>
+/*$(".jian").click(function(e) {
+			var button =$(this);              
+			$(this).ajaxSubmit({
+				 type: 'post',
+				 
+				 url: 'cart_jian.php',
+				 data: {'id': id } ,
+				 dataType : "json",
+				success:function(data){
+				}
+			});
+			
+        });*/
+</script>
+{/literal}
+</html>

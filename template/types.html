@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>菜单</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="food">
+	<div class="top">
+        <div class="title">菜单 Menu </div>
+        	<div class="member">{$member}<a style="margin-left:10px;" href="checkout.php">退出</a></div>
+	</div><!--top end-->
+    <div class="left">
+       <ul id="myTab">
+       	   <li><a href="index.php">全部</a></li>
+           <li><a href="hots.php?hot=1">热销</a></li>
+           <li><a href="types.php?typeid=1">正餐</a></li>
+           <li><a href="types.php?typeid=2">饮品</a></li>
+           <li><a href="types.php?typeid=3">甜点</a></li>
+           <li><a href="carts.php">我的购物车</a></li>
+           <li><a href="orders.php">我的订单</a></li>
+        </ul>
+    </div>
+
+    <div class="right">
+         <div class="scroll">
+            {foreach item=type from=$types}
+            <div class="menu">
+            <form action="cart_add.php?menuid={$type->getId()}&number=1" method="post">
+                <img src="{$type->getImg()}" class="picture" />
+                 <input type="hidden" name="img" value="{$type->getImg()}"/>
+                <div class="contain">
+                    <div class="content"><span>【{$type->getName()}】</span>￥{$type->getPrice()}元</div>
+                    <input type="hidden" name="name" value="{$type->getName()} "/>
+                    <div class="content">{$type->getIntroduce()}</div>
+                    <input type="hidden" name="price" value="{$type->getPrice()} "/>
+                    <input class="btn" type="submit" value="+" name="btn"/>
+                </div>
+             </form>
+             </div>
+              <hr width="595px"/>
+            {/foreach}
+       
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
